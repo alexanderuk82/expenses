@@ -31,7 +31,7 @@ function Welcome({ setWelcomeData, setPassWelcome }) {
     return (
         <main className="main-welcome">
             <div className="main-welcome__left">
-                <img src="./src/img/home-Illustrator.svg" alt="" />
+                <img src="./img/home-Illustrator.svg" alt="" />
                 <h2 className="banner">Calculate smarter, spend wiser ...</h2>
             </div>
             <div className="main-welcome__right">
