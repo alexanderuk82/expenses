@@ -1,0 +1,49 @@
+:root {
+    //!colours
+
+    --base: hsla(0, 0%, 12%, 1);
+    --base2: hsla(0, 0%, 12%, 0.988);
+    --light: hsla(55, 100%, 95%, 1);
+    --green: hsla(146, 59%, 57%, 1);
+    --box-color-light: hsla(0, 0%, 98%, 1);
+    --base-graph: hsla(0, 0%, 82%, 1);
+    --yellow: hsla(54, 100%, 50%, 1);
+    --section-box: hsla(0, 0%, 98%, 1);
+    --error: hsl(4, 90%, 58%);
+    --dashLine: hsl(0, 0%, 84%);
+    --shadow: 0px 3.51136px 10.5341px rgba(0, 0, 0, 0.05);
+
+    //!Fonts
+    --main-font: 'Open Sans', sans-serif;
+}
+
+$fontSize: (
+    'h1': 6rem,
+    'h2': 2.63rem,
+    'h3': 1.9rem,
+    'banner': 4.2rem,
+    'base': 1.5rem,
+    'goals': 1.3rem,
+    'xsmall': 1.1rem,
+    'logoText': 3rem,
+    'actionText':2rem,
+);
+$fontWeight: (
+    'regular': 400,
+    'semibold': 600,
+    'bold': 700,
+    'verybold': 800,
+);
+
+//Extras variables
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+.mt-7 {
+    margin-top: 7rem !important;
+}

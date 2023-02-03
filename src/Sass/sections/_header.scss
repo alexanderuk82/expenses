@@ -1,0 +1,53 @@
+@use '../abstract' as *;
+
+.header {
+    display: grid;
+    padding: 2rem 0;
+    grid-template-rows: 1fr auto;
+    gap: 1rem;
+    border-bottom: 1px solid var(--light);
+    margin-inline: 3rem;
+    &__logo {
+        @include position(flex, null, center, row, null);
+
+        &--text {
+            small {
+                @include font-style(
+                    map-get($fontSize, xsmall),
+                    null,
+                    var(--yellow),
+                    capitalize
+                );
+            }
+            .h1 {
+                @include font-style(
+                    map-get($fontSize, logoText),
+                    map-get($fontWeight, verybold),
+                    var(--light),
+                    capitalize
+                );
+            }
+        }
+        span {
+            color: var(--green);
+        }
+    }
+
+    .btn {
+        display: none;
+        @include btn;
+    }
+    .h3 {
+        @include position(flex, null, center, null, null); 
+        @include font-style(
+            map-get($fontSize, h3),
+            map-get($fontWeight, semibold),
+            var(--light),
+            capitalize
+        );
+
+        .userIcon{
+            display:none;
+        }
+    }
+}

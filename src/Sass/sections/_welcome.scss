@@ -1,0 +1,91 @@
+@use '../abstract/' as *;
+
+.main-welcome {
+    @include responsive(tablet-land) {
+        @include position(flex, null, null, row, null);
+    }
+
+    &__left {
+        display: none;
+
+        @include responsive(tablet-land) {
+            display: block;
+            position: relative;
+            width: 50%;
+            height: 100vh;
+            background-color: var(--light);
+            color: var(--base);
+
+            img {
+                width: 90%;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+
+            .banner {
+                @include font-style(
+                    map-get($fontSize, banner),
+                    map-get($fontWeight, semibold),
+                    inherit,
+                    capitalize
+                );
+                font-style: italic;
+                width: 50%;
+                width: 70%;
+                margin: 20rem 5rem 0 5rem;
+            }
+        }
+    }
+
+    &__right {
+        padding-inline: 4rem;
+        @include position(flex, center, center, column, 100vh);
+        @include responsive(tablet-land) {
+            width: 50%;
+            padding-inline: 9rem;
+        }
+        &__title {
+            text-align: center;
+            @include font-style(
+                map-get($fontSize, h1),
+                map-get($fontWeight, bold),
+                null,
+                capitalize
+            );
+
+            span {
+                color: var(--green);
+            }
+        }
+        &__form {
+            width: 100%;
+            margin-top: 5rem;
+            @include position(flex, null, null, column);
+            gap: 3.5rem;
+            &__field {
+                @include inputField;
+            }
+            .btn {
+                @include btn;
+            }
+        }
+
+        &__error {
+            background-color: var(--error);
+            font-size: 2rem;
+            width: 100%;
+            text-align: center;
+            transition: all 0.2s linear;
+            transform: translateY(-100rem);
+            opacity: 0;
+            visibility: hidden;
+        }
+        .show-error {
+            opacity: 1;
+            visibility: visible;
+            padding: 3rem;
+            transform: translateY(-4rem);
+        }
+    }
+}

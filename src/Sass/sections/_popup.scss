@@ -1,0 +1,54 @@
+@use '../abstract' as *;
+
+.popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--base2);
+
+    &__container {
+        @include position(flex, center, center, column, 100%);
+        padding: 3rem;
+        &__title {
+            text-align: center;
+            @include font-style(
+                map-get($fontSize, logoText),
+                map-get($fontWeight, bold),
+                inherit,
+                uppercase
+            );
+            margin-bottom: 1.2rem;
+            span {
+                display: block;
+                color: var(--green);
+            }
+        }
+        p {
+            text-transform: capitalize;
+        }
+    }
+}
+
+.floatIcon,
+.closeIcon {
+    background-color: transparent;
+    border: 0;
+    position: fixed;
+    right: 0;
+    cursor: pointer;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+.floatIcon {
+    bottom: 0;
+}
+
+.closeIcon {
+    top: 0;
+}

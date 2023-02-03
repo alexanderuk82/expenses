@@ -1,0 +1,22 @@
+@use '../abstract' as *;
+
+.main {
+    margin: 3rem;
+
+    &__container {
+        display: grid;
+        gap: 3rem;
+        &__calculation {
+            @include calculationBox;
+        }
+
+        &__optional {
+          
+            @include optionalBox;
+        }
+
+        &__table{
+            @include table
+        }
+    }
+}

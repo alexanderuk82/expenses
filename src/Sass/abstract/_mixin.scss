@@ -1,0 +1,456 @@
+@use '../abstract/variables' as *;
+
+@mixin font-style(
+    $size: (
+        inherit,
+    ),
+    $weight: 400,
+    $color: (
+        inherit,
+    ),
+    $transform: lowercase
+) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+    text-transform: $transform;
+}
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint == 'phone-land' {
+        @media (min-width: 31.25rem) {
+            @content;
+        }
+    }
+    @if $breakpoint == 'tablet' {
+        @media (min-width: 48rem) {
+            @content;
+        }
+    }
+    @if $breakpoint == 'tablet-land' {
+        @media (min-width: 56.25rem) {
+            @content;
+        }
+    }
+    @if $breakpoint == 'desktop' {
+        @media (min-width: 75rem) {
+            @content;
+        }
+    }
+}
+
+@mixin position($style, $content, $align, $direction, $height: (initial)) {
+    height: #{$height};
+    display: $style;
+    justify-content: $content;
+    align-items: $align;
+    flex-direction: $direction;
+}
+
+@mixin inputField {
+    &:focus-within {
+        transform: scale(1.03, 1.03);
+    }
+    position: relative;
+    transition: all 0.4s ease;
+    input,
+    select {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border: none;
+        border-color: #fff;
+        background: transparent;
+        border-style: none none solid none;
+        box-shadow: none;
+        color: inherit;
+        font-size: 3rem;
+        text-align: center;
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+    }
+
+    label {
+        display: block;
+        transform: translateY(-4.75rem);
+        transform-origin: 0 0;
+        transition: all 0.4s ease;
+        color: #fff;
+        opacity: 0.8;
+        text-align: center;
+        font-size: 20.5299px;
+        line-height: 28px;
+        letter-spacing: 0.3rem;
+        text-transform: capitalize;
+    }
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+        transform: translateY(-7.75rem);
+        text-align: left;
+        font-size: 1.5rem;
+        line-height: 14px;
+        letter-spacing: 0em;
+        color: var(--yellow);
+    }
+    select {
+        option {
+            background-color: var(--base);
+        }
+    }
+}
+
+@mixin btn {
+    background-color: var(--yellow);
+    padding: 1.5rem 2rem;
+    border: 0;
+    width: 100%;
+    @include font-style(
+        map-get($fontSize, base),
+        map-get($fontWeight, semibold),
+        var(--base),
+        capitalize
+    );
+    border-radius: 0.4rem;
+    transition: all 0.2s;
+
+    &:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+}
+
+//!Extendes Variables for each box in the main
+
+%initialBox {
+    background-color: var(--box-color-light);
+    padding: 2.5rem;
+    border-radius: 0.3rem;
+    color: var(--base);
+    text-align: center;
+    @include position(flex, null, null, column);
+    gap: 2.5rem;
+    .h2 {
+        @include font-style(
+            map-get($fontSize, h2),
+            inherit,
+            inherit,
+            capitalize
+        );
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--dashLine);
+    }
+}
+
+@mixin calculationBox {
+    @extend %initialBox;
+    &__content {
+        @include position(flex, null, null, column);
+        gap: 2.5rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px dashed var(--dashLine);
+        &--income {
+            padding: 1.41rem;
+            background-color: var(--light);
+            box-shadow: var(--shadow);
+            p {
+                @extend %smallLabel;
+            }
+
+            .h2Income {
+                @include font-style(
+                    map-get($fontSize, h2),
+                    inherit,
+                    inherit,
+                    capitalize
+                );
+            }
+        }
+
+        &__info {
+            @include position(flex, space-around, center, null);
+            gap: 1rem;
+
+            & > * {
+                background-color: var(--base);
+                color: var(--light);
+                padding: 1rem;
+                border-radius: 3px;
+                box-shadow: var(--shadow);
+            }
+            p {
+                @extend %smallLabel;
+            }
+
+            .h3 {
+                @include font-style(
+                    map-get($fontSize, h3),
+                    inherit,
+                    inherit,
+                    capitalize
+                );
+            }
+
+            &--available {
+                .h3 {
+                    color: var(--green);
+                }
+            }
+            &--spent {
+                .h3 {
+                    color: var(--yellow);
+                }
+            }
+        }
+    }
+
+    .btn {
+        @include btn;
+    }
+}
+
+@mixin optionalBox {
+    @extend %initialBox;
+
+    &__content {
+        background-color: var(--light);
+        padding: 2rem;
+        box-shadow: var(--shadow);
+
+        &--title {
+            @include font-style(
+                map-get($fontSize, xsmall),
+                map-get($fontWeight, bold),
+                inherit,
+                uppercase
+            );
+            letter-spacing: 0.1rem;
+        }
+
+        &__options {
+            margin-top: 3rem;
+
+            @include position(flex, null, null, column, null);
+            gap: 2rem;
+
+            &__item {
+                @include position(flex, space-between, center, row, null);
+
+                &--logo {
+                    @include position(flex, null, center, row, null);
+
+                    p {
+                        @extend %smallLabel;
+                        margin-left: 1.1rem;
+                    }
+                }
+
+                &--select {
+                    background-color: var(--green);
+                    cursor: pointer;
+                    border: 0;
+                    box-shadow: none;
+                    padding: 0.5rem 1.3rem;
+                    border-radius: 10rem;
+                    font-weight: map-get($fontWeight, bold);
+                }
+            }
+        }
+    }
+
+    &__goals {
+        padding-top: 2.5rem;
+        border-top: 1px dashed var(--dashLine);
+
+        .h2Goals {
+            @include font-style(
+                map-get($fontSize, h2),
+                inherit,
+                inherit,
+                capitalize
+            );
+        }
+
+        &--text {
+            text-align: left;
+            @include position(flex, null, center, null);
+            gap: 1rem;
+            span {
+                width: 5px;
+                height: 4rem;
+                background-color: var(--green);
+            }
+            p {
+                @include font-style(
+                    map-get($fontSize, goals),
+                    map-get($fontWeight, semibold),
+                    inherit,
+                    capitalize
+                );
+            }
+        }
+    }
+}
+
+@mixin table {
+    border-top: 1px solid var(--light);
+
+    &__content {
+        margin: 2rem 0;
+
+        &__top {
+            @include position(flex, space-between, center, null, null);
+            p {
+                color: var(--yellow);
+            }
+            &__filter {
+                @include position(flex, space-between, center, null, null);
+                gap: 0.3rem;
+                border: 1px solid var(--yellow);
+                padding: 1rem 1.2rem;
+                border-radius: 3px;
+                span {
+                    font-size: map-get($fontSize, xsmall);
+                    padding-right: 1rem;
+                    border-right: 1px solid var(--light);
+                }
+                select {
+                    text-transform: capitalize;
+                    cursor: pointer;
+                    background-color: transparent;
+                    color: var(--yellow);
+                    border: 0;
+                    appearance: none;
+                    -moz-appearance: none;
+                    -ms-appearance: none;
+                    position: relative;
+                    font-family: inherit;
+                    text-align: center;
+                    &:focus {
+                        outline: transparent;
+                    }
+                    background-image: url('./src/img/carret.svg');
+                    background-repeat: no-repeat;
+                    background-position: 100% center;
+                    padding-right: 1.2rem;
+
+                    option {
+                        background-color: var(--base);
+                    }
+                }
+            }
+        }
+
+        &__expenses {
+            margin-top: 3rem;
+            & > * {
+                border-top: 1px dashed var(--light);
+                padding: 1rem 0;
+                &:not(:last-child) {
+                    border-bottom: 1px dashed var(--light);
+                }
+            }
+            &__spent {
+                overflow: hidden;
+                cursor: pointer;
+                &__default {
+                    position: relative;
+                    @include position(flex, space-between, center, null, null);
+                }
+                &--left {
+                    @include position(flex, null, center, row, null);
+                    gap: 1rem;
+                }
+
+                &__hover {
+                    background-color: var(--light);
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    @include position(flex, center, center, row, null);
+                    gap: 2rem;
+                    transition: transform 0.3s linear;
+                    transform: translateY(10rem);
+                    button {
+                        background-color: transparent;
+                        border: none;
+                        outline: 0;
+                        cursor: pointer;
+                        @include position(flex, null, center, row, null);
+                        &:focus,
+                        &:active {
+                            outline: none;
+                        }
+                        @include font-style(
+                            map-get($fontSize, base),
+                            map-get($fontWeight, regular),
+                            null,
+                            capitalize
+                        );
+
+                        img {
+                            width: 2.1rem;
+                            height: 2.1rem;
+                        }
+                    }
+
+                    .editar {
+                        color: var(--green);
+                    }
+                    .delete {
+                        color: var(--error);
+                    }
+                }
+                &--category {
+                    @include position(flex, null, null, column, null);
+
+                    .h2Category {
+                        @include font-style(
+                            map-get($fontSize, h3),
+                            map-get($fontWeight, regular),
+                            null,
+                            capitalize
+                        );
+                    }
+                    small {
+                        text-transform: capitalize;
+                        span {
+                            margin-left: 0.7rem;
+                        }
+                    }
+                }
+
+                &--amount {
+                    @include font-style(
+                        map-get($fontSize, h2),
+                        map-get($fontWeight, regular),
+                        null,
+                        capitalize
+                    );
+                }
+
+                
+            }
+            &__spent:hover  .main__container__table__content__expenses__spent__hover {
+            transform: translateY(0rem);
+        }
+        }
+    }
+}
+%smallLabel {
+    @include font-style(
+        map-get($fontSize, xsmall),
+        map-get($fontWeight, bold),
+        inherit,
+        uppercase
+    );
+    letter-spacing: 0.2rem;
+}
