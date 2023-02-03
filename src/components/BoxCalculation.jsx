@@ -12,7 +12,7 @@ function BoxCalculation({ welcomeData, setWelcomeData }) {
                     </h2>
                 </div>
                 <div className="main__container__calculation__content--graph">
-                    <img src="./src/img/graph.svg" alt="" />
+                    <img src="./img/graph.svg" alt="" />
                 </div>
                 <div className="main__container__calculation__content__info">
                     <div className="main__container__calculation__content__info--available">

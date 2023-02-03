@@ -38,7 +38,7 @@ function PopupForm({ form, setForm, setExpenses, expenses }) {
         <div className={`popup ${form ? 'show' : 'hide'}`}>
             <div className="popup__container">
                 <button className="closeIcon" onClick={() => handleHidePopUp()}>
-                    <img src="./src/img/icon-close.svg" alt="close popup" />
+                    <img src="./img/icon-close.svg" alt="close popup" />
                 </button>
                 <div
                     className={`main-welcome__right__error ${

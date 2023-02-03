@@ -7,7 +7,7 @@ function ExpenseBox({ spent }) {
             <div className="main__container__table__content__expenses__spent__default">
                 <div className="main__container__table__content__expenses__spent--left">
                     <img
-                        src={`./src/img/${spent.category}.svg`}
+                        src={`../img/${spent.category}.svg`}
                         alt={`spent.category`}
                     />
                     <div className="main__container__table__content__expenses__spent--category">
@@ -22,11 +22,11 @@ function ExpenseBox({ spent }) {
                 </div>
                 <div className="main__container__table__content__expenses__spent__hover">
                     <button className="editar">
-                        <img src="./src/img/edit-icon.svg" alt="edit" />
+                        <img src="./img/edit-icon.svg" alt="edit" />
                         edit
                     </button>
                     <button className="delete">
-                        <img src="./src/img/delete-icon.svg" alt="edit" />
+                        <img src="./img/delete-icon.svg" alt="edit" />
                         delete
                     </button>
                 </div>

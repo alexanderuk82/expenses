@@ -5,7 +5,7 @@ function FloatingBtn({ setForm }) {
 
     return (
         <button className="floatIcon" onClick={() => handleShowPopUp()}>
-            <img src="./src/img/icon-add.svg" alt="add expenses" />
+            <img src="./img/icon-add.svg" alt="add expenses" />
         </button>
     )
 }
