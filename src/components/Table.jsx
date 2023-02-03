@@ -1,6 +1,6 @@
 import ExpenseBox from './ExpenseBox'
 
-function Table() {
+function Table({ setExpenses, expenses }) {
     return (
         <div className="main__container__table">
             <div className="main__container__table__content">
@@ -22,8 +22,9 @@ function Table() {
                     </div>
                 </div>
                 <div className="main__container__table__content__expenses">
-                    <ExpenseBox />
-                    <ExpenseBox />
+                    {expenses.map((spent) => {
+                        return <ExpenseBox spent={spent} />
+                    })}
                 </div>
             </div>
         </div>

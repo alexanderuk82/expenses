@@ -11,6 +11,13 @@
     &__container {
         @include position(flex, center, center, column, 100%);
         padding: 3rem;
+
+        .show-error {
+            opacity: 1;
+            visibility: visible;
+            padding: 3rem;
+            transform: translateY(-4rem);
+        }
         &__title {
             text-align: center;
             @include font-style(

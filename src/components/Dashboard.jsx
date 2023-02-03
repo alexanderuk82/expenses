@@ -3,7 +3,14 @@ import Header from './Header'
 import MainContent from './MainContent'
 import PopupForm from './PopupForm'
 
-function Dashboard({ welcomeData, setWelcomeData, form, setForm }) {
+function Dashboard({
+    welcomeData,
+    setWelcomeData,
+    form,
+    setForm,
+    expenses,
+    setExpenses,
+}) {
     const { incomeValue, name, goals } = welcomeData
     return (
         <>
@@ -12,10 +19,17 @@ function Dashboard({ welcomeData, setWelcomeData, form, setForm }) {
             <MainContent
                 welcomeData={welcomeData}
                 setWelcomeData={setWelcomeData}
+                expenses={expenses}
+                setExpenses={setExpenses}
             />
 
             <FloatingBtn setForm={setForm} />
-            <PopupForm form={form} setForm={setForm} />
+            <PopupForm
+                form={form}
+                setForm={setForm}
+                expenses={expenses}
+                setExpenses={setExpenses}
+            />
         </>
     )
 }

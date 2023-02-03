@@ -2,7 +2,7 @@ import BoxCalculation from "./BoxCalculation"
 import BoxOptional from "./BoxOptional"
 import Table from "./Table"
 
-function MainContent({welcomeData, setWelcomeData}) {
+function MainContent({welcomeData, setWelcomeData, setExpenses, expenses}) {
     return (
         <main className="main">
             <div className="main__container">
@@ -14,7 +14,10 @@ function MainContent({welcomeData, setWelcomeData}) {
                      welcomeData={welcomeData}
                 />
 
-                <Table />
+                <Table 
+                expenses={expenses}
+                setExpenses={setExpenses}
+                />
             </div>
         </main>
     )

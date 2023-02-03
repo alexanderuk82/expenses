@@ -53,6 +53,7 @@ function Welcome({ setWelcomeData, setPassWelcome }) {
                     <div className="main-welcome__right__form__field">
                         <input
                             type="number"
+                            min="0"
                             id="income"
                             placeholder="none"
                             value={incomeValue}
