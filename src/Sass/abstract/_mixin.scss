@@ -335,7 +335,7 @@
                     &:focus {
                         outline: transparent;
                     }
-                    background-image: url('./img/carret.svg');
+                    background-image: url('/public/img/carret.svg');
                     background-repeat: no-repeat;
                     background-position: 100% center;
                     padding-right: 1.2rem;
@@ -436,12 +436,11 @@
                         capitalize
                     );
                 }
-
-                
             }
-            &__spent:hover  .main__container__table__content__expenses__spent__hover {
-            transform: translateY(0rem);
-        }
+            &__spent:hover
+                .main__container__table__content__expenses__spent__hover {
+                transform: translateY(0rem);
+            }
         }
     }
 }
