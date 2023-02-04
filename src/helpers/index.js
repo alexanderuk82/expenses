@@ -1,4 +1,4 @@
-export function crearId() {
+export function getId() {
   const array = new Uint32Array(5);
   window.crypto.getRandomValues(array);
   return Array.from(array, (value) => value.toString(26)).join('');

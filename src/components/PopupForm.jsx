@@ -1,6 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { getId } from '../helpers'
 
-function PopupForm({ form, setForm, setExpenses, expenses }) {
+function PopupForm({
+    form,
+    setForm,
+    setExpenses,
+    expenses,
+    option,
+    setOption,
+}) {
     function handleHidePopUp() {
         setForm(false)
     }
@@ -9,6 +17,13 @@ function PopupForm({ form, setForm, setExpenses, expenses }) {
     const [nameExpense, setNameExpense] = useState('')
     const [category, setCategory] = useState('')
     const [error, setError] = useState('')
+
+    useEffect(() => {
+        if (option) {
+            setNameExpense(option)
+        }
+    }, [option])
+
     function handleAddExpense(e) {
         e.preventDefault()
 
@@ -25,13 +40,15 @@ function PopupForm({ form, setForm, setExpenses, expenses }) {
             amount,
             nameExpense,
             category,
+            id: getId(),
         }
 
-        setExpenses([...expenses, objExpense])
+        setExpenses([objExpense, ...expenses])
         setAmount(0)
         setCategory('')
         setNameExpense('')
         setForm(false)
+        setOption('')
     }
 
     return (
@@ -84,7 +101,7 @@ function PopupForm({ form, setForm, setExpenses, expenses }) {
                             value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
-                            <option selected>select category</option>
+                            <option>select category</option>
                             <option value="debts">debts</option>
                             <option value="food">food</option>
                             <option value="hobbie">hobbie</option>

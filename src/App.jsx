@@ -6,6 +6,7 @@ function App() {
     const [welcomeData, setWelcomeData] = useState({})
     const [passWelcome, setPassWelcome] = useState(false)
     const [form, setForm] =useState(false)
+    const [option, setOption] = useState('')
     const[expenses, setExpenses]= useState([])
     return (
         <>
@@ -17,7 +18,8 @@ function App() {
                     setForm={setForm}
                     expenses = {expenses}
                     setExpenses = {setExpenses}
-                />
+                    setOption ={setOption}    
+                    option={option}            />
             ) : (
                 <>
                     <Welcome

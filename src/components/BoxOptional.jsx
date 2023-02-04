@@ -1,6 +1,6 @@
 import Option from './Option'
 
-function BoxOptional({ welcomeData }) {
+function BoxOptional({ welcomeData, setOption, setForm }) {
     return (
         <div className="main__container__optional">
             <h2 className="h2">Optionals</h2>
@@ -10,11 +10,31 @@ function BoxOptional({ welcomeData }) {
                 </p>
 
                 <div className="main__container__optional__content__options">
-                    <Option nameItem="netflix" />
-                    <Option nameItem="spotify" />
-                    <Option nameItem="amazon" />
-                    <Option nameItem="google" />
-                    <Option nameItem="facebook" />
+                    <Option
+                        nameItem="netflix"
+                        setOption={setOption}
+                        setForm={setForm}
+                    />
+                    <Option
+                        nameItem="spotify"
+                        setOption={setOption}
+                        setForm={setForm}
+                    />
+                    <Option
+                        nameItem="amazon"
+                        setOption={setOption}
+                        setForm={setForm}
+                    />
+                    <Option
+                        nameItem="google"
+                        setOption={setOption}
+                        setForm={setForm}
+                    />
+                    <Option
+                        nameItem="facebook"
+                        setOption={setOption}
+                        setForm={setForm}
+                    />
                 </div>
             </div>
             <div className="main__container__optional__goals">

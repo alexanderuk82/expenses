@@ -25,7 +25,11 @@ function Table({ setExpenses, expenses }) {
                     {expenses.length > 0 ? (
                         <>
                             {expenses.map((spent) => {
-                                return <ExpenseBox spent={spent} />
+                                return (
+                                <ExpenseBox 
+                                spent={spent}
+                                key={spent.id}
+                                 />)
                             })}
                         </>
                     ) : (

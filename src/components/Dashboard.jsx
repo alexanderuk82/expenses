@@ -8,6 +8,8 @@ function Dashboard({
     setWelcomeData,
     form,
     setForm,
+    setOption,
+    option,
     expenses,
     setExpenses,
 }) {
@@ -21,6 +23,8 @@ function Dashboard({
                 setWelcomeData={setWelcomeData}
                 expenses={expenses}
                 setExpenses={setExpenses}
+                setForm={setForm}
+                setOption ={setOption} 
             />
 
             <FloatingBtn setForm={setForm} />
@@ -29,6 +33,8 @@ function Dashboard({
                 setForm={setForm}
                 expenses={expenses}
                 setExpenses={setExpenses}
+                setOption ={setOption}    
+                option={option} 
             />
         </>
     )
