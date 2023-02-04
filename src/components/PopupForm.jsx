@@ -81,11 +81,10 @@ function PopupForm({ form, setForm, setExpenses, expenses }) {
                         <select
                             name="expense"
                             id="category"
+                            value={category}
                             onChange={(e) => setCategory(e.target.value)}
                         >
-                            <option value=" " disabled>
-                                select category
-                            </option>
+                            <option selected>select category</option>
                             <option value="debts">debts</option>
                             <option value="food">food</option>
                             <option value="hobbie">hobbie</option>

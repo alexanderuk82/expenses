@@ -22,9 +22,27 @@ function Table({ setExpenses, expenses }) {
                     </div>
                 </div>
                 <div className="main__container__table__content__expenses">
-                    {expenses.map((spent) => {
-                        return <ExpenseBox spent={spent} />
-                    })}
+                    {expenses.length > 0 ? (
+                        <>
+                            {expenses.map((spent) => {
+                                return <ExpenseBox spent={spent} />
+                            })}
+                        </>
+                    ) : (
+                        <>
+                            <div className="main__container__table__content__expenses--message">
+                                <h2 className="h2Table">
+                                    looks like you haven't added any {' '}
+                                    <span>expenses yet.</span>
+                                </h2>
+                                <p>
+                                    No worries, just hit the <span>'Add'</span>{' '}
+                                    button to get started
+                                </p>
+                                <img src="./img/cart.svg" alt="add expense" />
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>

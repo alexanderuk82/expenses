@@ -376,7 +376,7 @@
                     top: 0;
                     left: 0;
                     @include position(flex, center, center, row, null);
-                    gap: 2rem;
+                    gap: 3rem;
                     transition: transform 0.3s linear;
                     transform: translateY(10rem);
                     button {
@@ -391,10 +391,11 @@
                         }
                         @include font-style(
                             map-get($fontSize, base),
-                            map-get($fontWeight, regular),
+                            map-get($fontWeight, semibold),
                             null,
-                            capitalize
+                            uppercase
                         );
+                        letter-spacing: 1px;
 
                         img {
                             width: 2.1rem;
@@ -440,6 +441,32 @@
             &__spent:hover
                 .main__container__table__content__expenses__spent__hover {
                 transform: translateY(0rem);
+            }
+
+            &--message{
+                text-align: center;
+                span{
+                    color: var(--green)
+                }
+                .h2Table{
+                    margin:5rem 0 2rem;
+
+                    @include font-style(
+                        map-get($fontSize, h2),
+                        map-get($fontWeight, semibold),
+                        null,
+                        capitalize
+                    );
+                }
+
+                p{
+                    margin: auto;
+                    width: 90%;
+                    margin-bottom: 2rem;
+                }
+                img{
+                    width: 20%;
+                }
             }
         }
     }
