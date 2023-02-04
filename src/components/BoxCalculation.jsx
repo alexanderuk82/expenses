@@ -14,12 +14,16 @@ function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
                     </h2>
                 </div>
                 <div className="main__container__calculation__content--graph">
+                    <p>spent</p>
                     <CircularProgressbar
-                        text={`${percent}% gastado`}
                        
-                        value={percent}
+                        text={`${percent}% `}
+                        value={percent}                        
                         styles={buildStyles({
-                          
+                            textSize: '2rem',
+                            textColor: '#1f1f1f',
+                            strokeLinecap: 'butt',
+                            pathColor: 'hsla(146, 59%, 57%, 1)'
                         })}
                     />
                 </div>

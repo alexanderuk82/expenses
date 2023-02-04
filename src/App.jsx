@@ -23,10 +23,13 @@ function App() {
                 (100 * (incomeValue - totalAvailable)) /
                 incomeValue
             ).toFixed(2)
-            setSpent(totalSpent)
-            setAvailable(totalAvailable)
-            setPercent(percentSpent)
-            return
+
+            setTimeout(() => {
+                setSpent(totalSpent)
+                setAvailable(totalAvailable)
+                setPercent(percentSpent)
+                return
+            }, 1000)
         }
     }, [expenses])
 

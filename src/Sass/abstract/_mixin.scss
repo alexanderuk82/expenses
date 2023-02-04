@@ -180,7 +180,7 @@
             & > * {
                 background-color: var(--base);
                 color: var(--light);
-                padding: 1rem;
+                padding: 1rem 2rem;
                 border-radius: 3px;
                 box-shadow: var(--shadow);
             }
@@ -190,7 +190,7 @@
 
             .h3 {
                 @include font-style(
-                    map-get($fontSize, h3),
+                    map-get($fontSize, h2),
                     inherit,
                     inherit,
                     capitalize
@@ -209,12 +209,18 @@
             }
         }
 
-        &--graph{
+        &--graph {
             width: 70%;
             margin: auto;
+            margin-top: -2rem;
 
-            .CircularProgressbar .CircularProgressbar-path{
-                stroke: var(--green)
+            p {
+                position: relative;
+                top: 55%;
+                left: 50%;
+                transform: translate(-50%, 120%);
+                text-transform: uppercase;
+                letter-spacing: 3px;
             }
         }
     }
@@ -452,13 +458,13 @@
                 transform: translateY(0rem);
             }
 
-            &--message{
+            &--message {
                 text-align: center;
-                span{
-                    color: var(--green)
+                span {
+                    color: var(--green);
                 }
-                .h2Table{
-                    margin:5rem 0 2rem;
+                .h2Table {
+                    margin: 5rem 0 2rem;
 
                     @include font-style(
                         map-get($fontSize, h2),
@@ -468,12 +474,12 @@
                     );
                 }
 
-                p{
+                p {
                     margin: auto;
                     width: 90%;
                     margin-bottom: 2rem;
                 }
-                img{
+                img {
                     width: 20%;
                 }
             }
