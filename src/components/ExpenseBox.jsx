@@ -13,6 +13,9 @@ function ExpenseBox({ spent }) {
                     <div className="main__container__table__content__expenses__spent--category">
                         <h2 className="h2Category">{category}</h2>
                         <small>
+                            company name: <span>{nameExpense}</span>
+                        </small>
+                        <small>
                             date: <span>{getDate()}</span>
                         </small>
                     </div>

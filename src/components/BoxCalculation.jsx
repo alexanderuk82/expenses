@@ -1,6 +1,8 @@
 import { formatCurrency } from '../helpers'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 
-function BoxCalculation({ welcomeData, setWelcomeData }) {
+function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
     return (
         <div className="main__container__calculation">
             <h2 className="h2">Calculation</h2>
@@ -12,16 +14,28 @@ function BoxCalculation({ welcomeData, setWelcomeData }) {
                     </h2>
                 </div>
                 <div className="main__container__calculation__content--graph">
-                    <img src="./img/graph.svg" alt="" />
+                    <CircularProgressbar
+                        text={percent}
+                        value={percent}
+                        styles={buildStyles({
+                          
+                        })}
+                    />
                 </div>
                 <div className="main__container__calculation__content__info">
                     <div className="main__container__calculation__content__info--available">
                         <p>available</p>
-                        <h3 className="h3">£2,000.00</h3>
+                        <h3 className="h3">
+                            {expenses.length > 0 ? (
+                                <>{formatCurrency(available)}</>
+                            ) : (
+                                <>{formatCurrency(welcomeData.incomeValue)}</>
+                            )}
+                        </h3>
                     </div>
                     <div className="main__container__calculation__content__info--spent">
                         <p>spent</p>
-                        <h3 className="h3">£2,000.00</h3>
+                        <h3 className="h3">{formatCurrency(spent)}</h3>
                     </div>
                 </div>
             </div>

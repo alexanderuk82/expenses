@@ -92,7 +92,7 @@ function PopupForm({
                             value={nameExpense}
                             onChange={(e) => setNameExpense(e.target.value)}
                         />
-                        <label htmlFor="spentName">Name expenses</label>
+                        <label htmlFor="spentName">Name company</label>
                     </div>
                     <div className="main-welcome__right__form__field">
                         <select

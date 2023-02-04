@@ -81,7 +81,7 @@ function Welcome({ setWelcomeData, setPassWelcome }) {
                             value={goals}
                             onChange={(e) => setGoals(e.target.value)}
                         />
-                        <label htmlFor="goals">Insert your goals</label>
+                        <label htmlFor="goals">monthly saving goals</label>
                     </div>
                     <input
                         type="submit"

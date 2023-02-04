@@ -8,7 +8,10 @@ function MainContent({
     setExpenses,
     expenses,
     setOption,
-    setForm
+    setForm,
+    available,
+    spent,
+    percent
 }) {
     return (
         <main className="main">
@@ -16,6 +19,10 @@ function MainContent({
                 <BoxCalculation
                     welcomeData={welcomeData}
                     setWelcomeData={setWelcomeData}
+                    available={available}
+                    spent={spent}
+                    percent={percent}
+                    expenses={expenses}
                 />
                 <BoxOptional 
                 welcomeData={welcomeData} 

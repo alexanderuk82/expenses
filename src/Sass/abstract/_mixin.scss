@@ -208,6 +208,15 @@
                 }
             }
         }
+
+        &--graph{
+            width: 70%;
+            margin: auto;
+
+            .CircularProgressbar .CircularProgressbar-path{
+                stroke: var(--green)
+            }
+        }
     }
 
     .btn {

@@ -1,25 +1,51 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Welcome from './components/Welcome'
 import Dashboard from './components/Dashboard'
 
 function App() {
     const [welcomeData, setWelcomeData] = useState({})
     const [passWelcome, setPassWelcome] = useState(false)
-    const [form, setForm] =useState(false)
+    const [form, setForm] = useState(false)
     const [option, setOption] = useState('')
-    const[expenses, setExpenses]= useState([])
+    const [expenses, setExpenses] = useState([])
+    const [spent, setSpent] = useState(0)
+    const [available, setAvailable] = useState(0)
+    const [percent, setPercent] = useState(0)
+    const { incomeValue } = welcomeData
+    useEffect(() => {
+        if (expenses.length > 0) {
+            const totalSpent = expenses.reduce(
+                (total, amountSpent) => amountSpent.amount + total,
+                0
+            )
+            const totalAvailable = incomeValue - totalSpent
+            const percentSpent = (
+                (100 * (incomeValue - totalAvailable)) /
+                incomeValue
+            ).toFixed(2)
+            setSpent(totalSpent)
+            setAvailable(totalAvailable)
+            setPercent(percentSpent)
+            return
+        }
+    }, [expenses])
+
     return (
         <>
             {passWelcome ? (
-                <Dashboard 
-                    welcomeData = {welcomeData}
-                    setWelcomeData = {setWelcomeData}
+                <Dashboard
+                    welcomeData={welcomeData}
+                    setWelcomeData={setWelcomeData}
                     form={form}
                     setForm={setForm}
-                    expenses = {expenses}
-                    setExpenses = {setExpenses}
-                    setOption ={setOption}    
-                    option={option}            />
+                    expenses={expenses}
+                    setExpenses={setExpenses}
+                    setOption={setOption}
+                    option={option}
+                    available={available}
+                    spent={spent}
+                    percent={percent}
+                />
             ) : (
                 <>
                     <Welcome
