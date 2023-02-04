@@ -15,7 +15,8 @@ function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
                 </div>
                 <div className="main__container__calculation__content--graph">
                     <CircularProgressbar
-                        text={percent}
+                        text={`${percent}% gastado`}
+                       
                         value={percent}
                         styles={buildStyles({
                           
