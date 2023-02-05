@@ -11,7 +11,10 @@ function MainContent({
     setForm,
     available,
     spent,
-    percent
+    percent,
+    selected,
+    setSelected,
+    removeItem
 }) {
     return (
         <main className="main">
@@ -24,13 +27,19 @@ function MainContent({
                     percent={percent}
                     expenses={expenses}
                 />
-                <BoxOptional 
-                welcomeData={welcomeData} 
-                setOption ={setOption}
-                setForm={setForm}
+                <BoxOptional
+                    welcomeData={welcomeData}
+                    setOption={setOption}
+                    setForm={setForm}
                 />
 
-                <Table expenses={expenses} setExpenses={setExpenses} />
+                <Table
+                    expenses={expenses}
+                    setExpenses={setExpenses}
+                    selected={selected}
+                    setSelected={setSelected}
+                    removeItem={removeItem}
+                />
             </div>
         </main>
     )

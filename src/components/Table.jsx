@@ -1,6 +1,6 @@
 import ExpenseBox from './ExpenseBox'
 
-function Table({ setExpenses, expenses }) {
+function Table({ setExpenses, expenses, selected, setSelected, removeItem }) {
     return (
         <div className="main__container__table">
             <div className="main__container__table__content">
@@ -26,17 +26,20 @@ function Table({ setExpenses, expenses }) {
                         <>
                             {expenses.map((spent) => {
                                 return (
-                                <ExpenseBox 
-                                spent={spent}
-                                key={spent.id}
-                                 />)
+                                    <ExpenseBox
+                                        spent={spent}
+                                        key={spent.id}
+                                        setSelected={setSelected}
+                                        removeItem={removeItem}
+                                    />
+                                )
                             })}
                         </>
                     ) : (
                         <>
                             <div className="main__container__table__content__expenses--message">
                                 <h2 className="h2Table">
-                                    looks like you haven't added any {' '}
+                                    looks like you haven't added any{' '}
                                     <span>expenses yet.</span>
                                 </h2>
                                 <p>

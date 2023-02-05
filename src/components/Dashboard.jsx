@@ -15,6 +15,9 @@ function Dashboard({
     available,
     spent,
     percent,
+    selected,
+    setSelected,
+    removeItem
 }) {
     const { incomeValue, name, goals } = welcomeData
     return (
@@ -31,7 +34,10 @@ function Dashboard({
                 available={available}
                 spent={spent}
                 percent={percent}
-            />
+                selected={selected}
+                setSelected={setSelected}
+                removeItem={removeItem}
+                />
 
             <FloatingBtn setForm={setForm} />
             <PopupForm
@@ -41,6 +47,8 @@ function Dashboard({
                 setExpenses={setExpenses}
                 setOption={setOption}
                 option={option}
+                selected={selected}
+                setSelected={setSelected}
             />
         </>
     )

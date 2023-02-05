@@ -201,6 +201,17 @@
                 .h3 {
                     color: var(--green);
                 }
+
+                .negative {
+                    @include font-style(
+                        map-get($fontSize, h2),
+                        inherit,
+                        inherit,
+                        capitalize
+                    );
+                    color: var(--error) ;
+                }
+               
             }
             &--spent {
                 .h3 {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import { getId } from '../helpers'
 
 function PopupForm({
@@ -8,9 +9,16 @@ function PopupForm({
     expenses,
     option,
     setOption,
+    selected,
+    setSelected,
 }) {
     function handleHidePopUp() {
         setForm(false)
+        setSelected({})
+        setAmount(0)
+        setCategory('')
+        setNameExpense('')
+        setOption('')
     }
 
     const [amount, setAmount] = useState(0)
@@ -23,6 +31,15 @@ function PopupForm({
             setNameExpense(option)
         }
     }, [option])
+
+    useEffect(() => {
+        if (Object.keys(selected).length > 0) {
+            setForm(true)
+            setAmount(selected.amount)
+            setNameExpense(selected.nameExpense)
+            setCategory(selected.category)
+        }
+    }, [selected])
 
     function handleAddExpense(e) {
         e.preventDefault()
@@ -40,14 +57,24 @@ function PopupForm({
             amount,
             nameExpense,
             category,
-            id: getId(),
         }
 
-        setExpenses([objExpense, ...expenses])
+        if (selected.id) {
+            objExpense.id = selected.id
+            const spentUpdated = expenses.map((spentState) =>
+                spentState.id === selected.id ? objExpense : spentState
+            )
+
+            setExpenses(spentUpdated)
+            setSelected({})
+        } else {
+            (objExpense.id = getId()), setExpenses([objExpense, ...expenses])
+        }
+
+        setForm(false)
         setAmount(0)
         setCategory('')
         setNameExpense('')
-        setForm(false)
         setOption('')
     }
 

@@ -12,6 +12,7 @@ function App() {
     const [available, setAvailable] = useState(0)
     const [percent, setPercent] = useState(0)
     const { incomeValue } = welcomeData
+    const [selected, setSelected] = useState({})
     useEffect(() => {
         if (expenses.length > 0) {
             const totalSpent = expenses.reduce(
@@ -33,6 +34,15 @@ function App() {
         }
     }, [expenses])
 
+    //Remove item
+
+    const removeItem = (id) =>{
+
+        const removeId = expenses.filter(item => item.id !== id)
+        setExpenses(removeId)
+    }
+
+
     return (
         <>
             {passWelcome ? (
@@ -48,6 +58,9 @@ function App() {
                     available={available}
                     spent={spent}
                     percent={percent}
+                    selected ={selected}
+                    setSelected ={setSelected}
+                    removeItem={removeItem}
                 />
             ) : (
                 <>
