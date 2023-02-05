@@ -68,7 +68,7 @@ function PopupForm({
             setExpenses(spentUpdated)
             setSelected({})
         } else {
-            (objExpense.id = getId()), setExpenses([objExpense, ...expenses])
+            ;(objExpense.id = getId()), setExpenses([objExpense, ...expenses])
         }
 
         setForm(false)
@@ -142,7 +142,11 @@ function PopupForm({
 
                     <input
                         type="submit"
-                        value="add this expense"
+                        value={`${
+                            Object.keys(selected).length > 0
+                                ? 'Save changes'
+                                : 'Add new expense'
+                        }`}
                         className="btn"
                     />
                 </form>
