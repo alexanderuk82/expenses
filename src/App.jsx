@@ -3,16 +3,31 @@ import Welcome from './components/Welcome'
 import Dashboard from './components/Dashboard'
 
 function App() {
-    const [welcomeData, setWelcomeData] = useState({})
+    const [welcomeData, setWelcomeData] = useState(
+        JSON.parse(localStorage.getItem('user')) ?? {}
+    )
     const [passWelcome, setPassWelcome] = useState(false)
     const [form, setForm] = useState(false)
     const [option, setOption] = useState('')
-    const [expenses, setExpenses] = useState([])
+    const [expenses, setExpenses] = useState(
+        JSON.parse(localStorage.getItem('expenses')) ?? []
+    )
     const [spent, setSpent] = useState(0)
     const [available, setAvailable] = useState(0)
     const [percent, setPercent] = useState(0)
     const { incomeValue } = welcomeData
     const [selected, setSelected] = useState({})
+
+    const localStorageData = JSON.parse(localStorage.getItem('user'))
+
+    useEffect(() => {
+        if (localStorageData) {
+            setPassWelcome(true)
+            return
+        }
+       
+    }, [])
+
     useEffect(() => {
         if (expenses.length > 0) {
             const totalSpent = expenses.reduce(
@@ -32,16 +47,27 @@ function App() {
                 return
             }, 1000)
         }
+        else{
+            setPercent(0)
+        }
     }, [expenses])
 
     //Remove item
 
-    const removeItem = (id) =>{
-
-        const removeId = expenses.filter(item => item.id !== id)
+    const removeItem = (id) => {
+        const removeId = expenses.filter((item) => item.id !== id)
         setExpenses(removeId)
     }
 
+    //Save in the local Storage
+
+    useEffect(() => {
+        localStorage.setItem('user', JSON.stringify(welcomeData))
+    }, [welcomeData])
+
+    useEffect(() => {
+        localStorage.setItem('expenses', JSON.stringify(expenses))
+    }, [expenses])
 
     return (
         <>
@@ -58,8 +84,8 @@ function App() {
                     available={available}
                     spent={spent}
                     percent={percent}
-                    selected ={selected}
-                    setSelected ={setSelected}
+                    selected={selected}
+                    setSelected={setSelected}
                     removeItem={removeItem}
                 />
             ) : (
