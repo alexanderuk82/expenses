@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { getId } from '../helpers'
+import { getId, getDate } from '../helpers'
 
 function PopupForm({
     form,
@@ -11,6 +11,8 @@ function PopupForm({
     setOption,
     selected,
     setSelected,
+    filterResult,
+    setFilterFilterResult,
 }) {
     function handleHidePopUp() {
         setForm(false)
@@ -57,10 +59,21 @@ function PopupForm({
             amount,
             nameExpense,
             category,
+            date: getDate(),
         }
 
         if (selected.id) {
             objExpense.id = selected.id
+
+            if (filterResult.length > 0) {
+                const spentUpdatedFiltered = filterResult.map((spentState) =>
+                    spentState.id === selected.id ? objExpense : spentState
+                )
+
+                setFilterFilterResult(spentUpdatedFiltered)
+                setSelected({})
+            }
+
             const spentUpdated = expenses.map((spentState) =>
                 spentState.id === selected.id ? objExpense : spentState
             )
@@ -119,7 +132,7 @@ function PopupForm({
                             value={nameExpense}
                             onChange={(e) => setNameExpense(e.target.value)}
                         />
-                        <label htmlFor="spentName">Name company</label>
+                        <label htmlFor="spentName">Name for expenses</label>
                     </div>
                     <div className="main-welcome__right__form__field">
                         <select

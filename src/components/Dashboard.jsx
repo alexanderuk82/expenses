@@ -17,7 +17,12 @@ function Dashboard({
     percent,
     selected,
     setSelected,
-    removeItem
+    removeItem,
+    setPassWelcome,
+    filter,
+    setFilter,
+    filterResult,
+    setFilterFilterResult
 }) {
     const { incomeValue, name, goals } = welcomeData
     return (
@@ -37,6 +42,11 @@ function Dashboard({
                 selected={selected}
                 setSelected={setSelected}
                 removeItem={removeItem}
+                setPassWelcome={setPassWelcome}
+                filter={filter}
+                setFilter={setFilter}
+                filterResult={filterResult}
+                setFilterFilterResult={setFilterFilterResult}
                 />
 
             <FloatingBtn setForm={setForm} />
@@ -49,7 +59,9 @@ function Dashboard({
                 option={option}
                 selected={selected}
                 setSelected={setSelected}
-            />
+                filterResult={filterResult}
+                setFilterFilterResult={setFilterFilterResult}
+                />
         </>
     )
 }

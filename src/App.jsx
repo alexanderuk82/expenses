@@ -17,16 +17,30 @@ function App() {
     const [percent, setPercent] = useState(0)
     const { incomeValue } = welcomeData
     const [selected, setSelected] = useState({})
+    const [filter, setFilter] = useState('')
+    const [filterResult, setFilterFilterResult] = useState([])
 
     const localStorageData = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
-        if (localStorageData) {
+        if (Object.keys(localStorageData).length > 0) {
             setPassWelcome(true)
             return
         }
-       
     }, [])
+
+    //results filtering
+
+   
+
+    useEffect(() => {
+        if (filter) {
+            const getResult = expenses.filter(
+                (item) => item.category === filter
+            )
+            setFilterFilterResult(getResult)
+        }
+    }, [filter])
 
     useEffect(() => {
         if (expenses.length > 0) {
@@ -38,7 +52,7 @@ function App() {
             const percentSpent = (
                 (100 * (incomeValue - totalAvailable)) /
                 incomeValue
-            ).toFixed(2)
+            ).toFixed(1)
 
             setTimeout(() => {
                 setSpent(totalSpent)
@@ -46,8 +60,7 @@ function App() {
                 setPercent(percentSpent)
                 return
             }, 1000)
-        }
-        else{
+        } else {
             setPercent(0)
         }
     }, [expenses])
@@ -87,6 +100,11 @@ function App() {
                     selected={selected}
                     setSelected={setSelected}
                     removeItem={removeItem}
+                    setPassWelcome={setPassWelcome}
+                    filter={filter}
+                    setFilter={setFilter}
+                    filterResult={filterResult}
+                    setFilterFilterResult={setFilterFilterResult}
                 />
             ) : (
                 <>

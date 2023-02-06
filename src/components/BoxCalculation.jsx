@@ -2,7 +2,29 @@ import { formatCurrency } from '../helpers'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
-function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
+function BoxCalculation({
+    welcomeData,
+    setWelcomeData,
+    available,
+    spent,
+    percent,
+    expenses,
+    setExpenses,
+    setPassWelcome,
+    setFilterFilterResult,
+}) {
+    function handleResetApp() {
+        const answer = confirm(
+            '⛔⛔ Are you sure do you want to reset your App? ⛔⛔'
+        )
+        if (answer) {
+            setPassWelcome(false)
+            setExpenses([])
+            setWelcomeData({})
+            setFilterFilterResult([])
+        }
+    }
+
     return (
         <div className="main__container__calculation">
             <h2 className="h2">Calculation</h2>
@@ -33,9 +55,7 @@ function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
                 <div className="main__container__calculation__content__info">
                     <div className="main__container__calculation__content__info--available">
                         <p>available</p>
-                        <h3
-                            className={`${available < 0 ? 'negative' : 'h3'}`}
-                        >
+                        <h3 className={`${available < 0 ? 'negative' : 'h3'}`}>
                             {expenses.length > 0 ? (
                                 <>{formatCurrency(available)}</>
                             ) : (
@@ -49,7 +69,9 @@ function BoxCalculation({ welcomeData, available, spent, percent, expenses }) {
                     </div>
                 </div>
             </div>
-            <button className="btn">reset expenses</button>
+            <button className="btn" onClick={() => handleResetApp()}>
+                reset expenses
+            </button>
         </div>
     )
 }

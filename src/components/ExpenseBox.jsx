@@ -1,7 +1,7 @@
 import { getDate, formatCurrency } from '../helpers'
 
 function ExpenseBox({ spent, setSelected, removeItem }) {
-    const { amount, category, nameExpense } = spent
+    const { amount, category, nameExpense, date } = spent
 
     function handleEditingSpent(item) {
         setSelected(item)
@@ -28,10 +28,10 @@ function ExpenseBox({ spent, setSelected, removeItem }) {
                     <div className="main__container__table__content__expenses__spent--category">
                         <h2 className="h2Category">{category}</h2>
                         <small>
-                            company name: <span>{nameExpense}</span>
+                            name expense: <span>{nameExpense}</span>
                         </small>
                         <small>
-                            date: <span>{getDate()}</span>
+                            date: <span>{date}</span>
                         </small>
                     </div>
                 </div>

@@ -1,6 +1,15 @@
 import ExpenseBox from './ExpenseBox'
 
-function Table({ setExpenses, expenses, selected, setSelected, removeItem }) {
+function Table({
+    setExpenses,
+    expenses,
+    selected,
+    setSelected,
+    removeItem,
+    filter,
+    setFilter,
+    filterResult,
+}) {
     return (
         <div className="main__container__table">
             <div className="main__container__table__content">
@@ -8,7 +17,11 @@ function Table({ setExpenses, expenses, selected, setSelected, removeItem }) {
                     <p>Description</p>
                     <div className="main__container__table__content__top__filter">
                         <span>Filter expenses</span>
-                        <select name="expense" id="format">
+                        <select
+                            name="expense"
+                            id="format"
+                            onChange={(e) => setFilter(e.target.value)}
+                        >
                             <option value="">All</option>
                             <option value="debts">debts</option>
                             <option value="food">food</option>
@@ -24,16 +37,55 @@ function Table({ setExpenses, expenses, selected, setSelected, removeItem }) {
                 <div className="main__container__table__content__expenses">
                     {expenses.length > 0 ? (
                         <>
-                            {expenses.map((spent) => {
-                                return (
-                                    <ExpenseBox
-                                        spent={spent}
-                                        key={spent.id}
-                                        setSelected={setSelected}
-                                        removeItem={removeItem}
-                                    />
-                                )
-                            })}
+                            {filter ? (
+                                <>
+                                    {filterResult.length > 0 ? (
+                                        <>
+                                            {filterResult.map((spent) => {
+                                                return (
+                                                    <ExpenseBox
+                                                        spent={spent}
+                                                        key={spent.id}
+                                                        setSelected={
+                                                            setSelected
+                                                        }
+                                                        removeItem={removeItem}
+                                                    />
+                                                )
+                                            })}
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="main__container__table__content__expenses--message">
+                                                <h2 className="h2Table">
+                                                    looks like you haven't added
+                                                    any{' '}
+                                                    <span>expenses yet</span>
+                                                </h2>
+
+                                                <img
+                                                    src="./img/cart.svg"
+                                                    alt="add expense"
+                                                />
+                                            </div>
+                                        </>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    {expenses.map((spent) => {
+                                        return (
+                                            <ExpenseBox
+                                                spent={spent}
+                                                key={spent.id}
+                                                setSelected={setSelected}
+                                                removeItem={removeItem}
+                                                filterResult={filterResult}
+                                            />
+                                        )
+                                    })}
+                                </>
+                            )}
                         </>
                     ) : (
                         <>

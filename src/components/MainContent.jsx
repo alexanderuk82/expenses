@@ -14,7 +14,12 @@ function MainContent({
     percent,
     selected,
     setSelected,
-    removeItem
+    removeItem,
+    setPassWelcome,
+    filter,
+    setFilter,
+    filterResult,
+    setFilterFilterResult
 }) {
     return (
         <main className="main">
@@ -26,6 +31,9 @@ function MainContent({
                     spent={spent}
                     percent={percent}
                     expenses={expenses}
+                    setExpenses={setExpenses}
+                    setPassWelcome={setPassWelcome}
+                    setFilterFilterResult={setFilterFilterResult}
                 />
                 <BoxOptional
                     welcomeData={welcomeData}
@@ -39,6 +47,9 @@ function MainContent({
                     selected={selected}
                     setSelected={setSelected}
                     removeItem={removeItem}
+                    filter={filter}
+                    setFilter={setFilter}
+                    filterResult={filterResult}
                 />
             </div>
         </main>
