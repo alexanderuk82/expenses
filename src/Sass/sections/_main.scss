@@ -6,17 +6,30 @@
     &__container {
         display: grid;
         gap: 3rem;
+
+        @include responsive(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @include responsive(desktop) {
+            grid-template-columns: 1fr 0.1fr 0.6fr;
+        }
         &__calculation {
             @include calculationBox;
         }
 
         &__optional {
-          
             @include optionalBox;
         }
 
-        &__table{
-            @include table
+        &__table {
+            @include responsive(tablet) {
+                grid-column: 1/-1;
+            }
+            @include responsive(desktop) {
+                grid-column: 1;
+                grid-row: 1;
+            }
+            @include table;
         }
     }
 }
