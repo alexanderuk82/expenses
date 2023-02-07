@@ -2,7 +2,7 @@ function Header({ nameUser }) {
     return (
         <header className="header">
             <div className="header__logo">
-                <img src="./src/img/dollar-logo.svg" alt="" />
+                <img src="./img/dollar-logo.svg" alt="" />
                 <div className="header__logo--text">
                     <small>expenses</small>
                     <h1 className="h1">
