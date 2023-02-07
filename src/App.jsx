@@ -23,10 +23,11 @@ function App() {
     const localStorageData = JSON.parse(localStorage.getItem('user'))
 
     useEffect(() => {
-        if (Object.keys(localStorageData).length > 0) {
+        if (localStorageData) {
             setPassWelcome(true)
             return
         }
+        setPassWelcome(false)
     }, [])
 
     //results filtering
