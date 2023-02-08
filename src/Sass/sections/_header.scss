@@ -7,6 +7,12 @@
     gap: 1rem;
     border-bottom: 1px solid var(--light);
     margin-inline: 3rem;
+    @include responsive(desktop) {
+        grid-template-columns: 1fr auto auto;
+        gap: 4rem;
+        align-items: center;
+        grid-template-rows: none;
+    }
     &__logo {
         @include position(flex, null, center, row, null);
 
@@ -35,10 +41,19 @@
 
     .btn {
         display: none;
-        @include btn;
+
+        @include responsive(desktop) {
+            display: inline-block;
+            @include btn;
+        }
     }
     .h3 {
-        @include position(flex, null, center, null, null); 
+        @include responsive(desktop) {
+            grid-column: 2/3;
+            grid-row: 1;
+        }
+
+        @include position(flex, null, center, null, null);
         @include font-style(
             map-get($fontSize, h3),
             map-get($fontWeight, semibold),
@@ -46,8 +61,11 @@
             capitalize
         );
 
-        .userIcon{
-            display:none;
+        .userIcon {
+            display: none;
+            @include responsive(desktop) {
+                display: inline-block;
+            }
         }
     }
 }

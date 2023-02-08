@@ -1,4 +1,7 @@
-function Header({ nameUser }) {
+function Header({ nameUser, setForm }) {
+    function handleShowPopUp() {
+        setForm(true)
+    }
     return (
         <header className="header">
             <div className="header__logo">
@@ -10,12 +13,13 @@ function Header({ nameUser }) {
                     </h1>
                 </div>
             </div>
-            <button className="btn">new expense</button>
+            <button className="btn" onClick={() => handleShowPopUp()}>
+                new expense
+            </button>
             <h3 className="h3">
-                <img className= "userIcon" src="./src/img/user.svg" alt="" />
-                 welcome {nameUser}🖐️
-                
-                </h3>
+                <img className="userIcon" src="./img/user.svg" alt="" />
+                welcome {nameUser}🖐️
+            </h3>
         </header>
     )
 }

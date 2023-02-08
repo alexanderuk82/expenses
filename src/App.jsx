@@ -32,8 +32,6 @@ function App() {
 
     //results filtering
 
-   
-
     useEffect(() => {
         if (filter) {
             const getResult = expenses.filter(

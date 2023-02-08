@@ -27,7 +27,11 @@ function Dashboard({
     const { incomeValue, name, goals } = welcomeData
     return (
         <>
-            <Header nameUser={name} />
+            <Header 
+            nameUser={name} 
+            setForm={setForm}
+            />
+            
 
             <MainContent
                 welcomeData={welcomeData}

@@ -12,6 +12,11 @@
         @include position(flex, center, center, column, 100%);
         padding: 3rem;
 
+        @include responsive(tablet-land) {
+            width: 60%;
+            margin: auto;
+        }
+
         .show-error {
             opacity: 1;
             visibility: visible;
@@ -54,6 +59,9 @@
 
 .floatIcon {
     bottom: 0;
+    @include responsive(desktop) {
+        display: none;
+    }
 }
 
 .closeIcon {
